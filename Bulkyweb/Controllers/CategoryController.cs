@@ -1,6 +1,7 @@
 ﻿using Bulkyweb.Data;
 using Bulkyweb.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Bulkyweb.Controllers
 {
@@ -19,6 +20,13 @@ namespace Bulkyweb.Controllers
         public IActionResult Create1() 
         { 
             return View();
+        }
+        [HttpPost]
+        public IActionResult Create1(Category obj)
+        {
+            _db.Categories.Add(obj); //it is use dto add the enetr value that the user has entered 
+            _db.SaveChanges(); //whenever we addd we ahve to give save change in oder to get updated to that 
+            return RedirectToAction("Index");
         }
 
     }
